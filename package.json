@@ -1,0 +1,20 @@
+{
+  "name": "@monorepo/root",
+  "version": "1.0.0",
+  "description": "typescript monorepo template",
+  "repository": "git@github.com:viqueen/typescript-monorepo.git",
+  "author": "Hasnae R. <>",
+  "license": "Apache-2.0",
+  "private": true,
+  "workspaces": [
+    "modules/**"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "typescript": "^5.0.4"
+  }
+}
