@@ -1,8 +1,14 @@
 import React from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 
+import { ProductRoutes } from "../routes";
+
 const ProductApp = () => {
-  return <h1>product</h1>;
+  return (
+    <>
+      <ProductRoutes />
+    </>
+  );
 };
 
 const rootContainer = document.querySelector("#root");
