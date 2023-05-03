@@ -1,0 +1,9 @@
+{
+  "name": "@product-fe/app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack serve"
+  }
+}

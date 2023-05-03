@@ -1,3 +1,5 @@
 // noinspection JSUnusedGlobalSymbols
 
-export default async () => {};
+export default async () => {
+    // ignore
+};
