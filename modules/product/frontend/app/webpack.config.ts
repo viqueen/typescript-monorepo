@@ -7,7 +7,7 @@ import { Configuration as DevConfiguration } from 'webpack-dev-server';
 const config: Configuration & DevConfiguration = {
     mode: 'development',
     devServer: {
-        port: 7000,
+        port: 9000,
         proxy: [
             {
                 context: ['/product-gateway'],

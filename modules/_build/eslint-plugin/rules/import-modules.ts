@@ -10,11 +10,11 @@ const handleImportDeclaration =
     (context: Rule.RuleContext) =>
     (node: ESTree.ImportDeclaration & Rule.NodeParentExtension) => {
         const importValue = node.source.value as string;
-        const atlascanImport = importValue.startsWith('@monorepo');
+        const monorepoImport = importValue.startsWith('@monorepo');
 
-        if (!atlascanImport) return;
+        if (!monorepoImport) return;
 
-        const pattern = /@honey-([^/]+)\/([^/]+)/;
+        const pattern = /@monorepo-([^/]+)\/([^/]+)/;
         const matches = importValue.match(pattern);
         if (matches) return;
 
