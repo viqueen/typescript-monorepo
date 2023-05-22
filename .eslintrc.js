@@ -9,13 +9,20 @@ module.exports = {
             modules: true,
         },
     },
-    plugins: ['@typescript-eslint', 'import', 'react', '@monorepo-build'],
+    plugins: [
+        '@typescript-eslint',
+        'import',
+        'react',
+        '@monorepo-build',
+        '@atlaskit/design-system',
+    ],
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:import/recommended',
         'plugin:react/recommended',
+        'plugin:@atlaskit/design-system/recommended',
     ],
     env: {
         browser: true,

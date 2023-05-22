@@ -4,6 +4,8 @@ import { createRoot, hydrateRoot } from "react-dom/client";
 
 import { ProductRoutes } from "../routes";
 
+import "@atlaskit/css-reset";
+
 const ProductApp = () => {
   return (
     <>
