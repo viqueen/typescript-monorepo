@@ -9,12 +9,13 @@ module.exports = {
             modules: true,
         },
     },
-    plugins: ['@typescript-eslint', 'import', '@monorepo-build'],
+    plugins: ['@typescript-eslint', 'import', 'react', '@monorepo-build'],
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:import/recommended',
+        'plugin:react/recommended',
     ],
     env: {
         browser: true,
@@ -36,6 +37,13 @@ module.exports = {
                     order: 'asc',
                     caseInsensitive: true,
                 },
+                pathGroups: [
+                    {
+                        pattern: '{react,react-*}',
+                        group: 'external',
+                        position: 'before',
+                    },
+                ],
                 pathGroupsExcludedImportTypes: ['builtin'],
             },
         ],
@@ -51,6 +59,9 @@ module.exports = {
             node: {
                 extensions: ['.js', '.ts', '.tsx'],
             },
+        },
+        react: {
+            version: '18.2.0',
         },
     },
 };
