@@ -1,7 +1,6 @@
-.env
 *.log
-
+.env
 .idea/
-node_modules/
-
 dist/
+modules/_build/eslint-plugin/**/*.js
+node_modules/
