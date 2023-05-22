@@ -20,7 +20,7 @@ const config: Configuration & DevConfiguration = {
     },
     target: 'web',
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.css', '.scss']
+        extensions: ['.tsx', '.ts', '.js', '.css', '.scss', '.sass']
     },
     module: {
         rules: [
@@ -28,6 +28,10 @@ const config: Configuration & DevConfiguration = {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: '/node_modules/'
+            },
+            {
+                test: /\.(sa?)?css$/i,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     },
