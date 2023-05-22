@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "declaration": true,
     "esModuleInterop": true,
     "lib": ["dom", "es6"],
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "dist/modules",
+    "paths": {
+      "@monorepo/*": ["modules/*"]
+    },
     "resolveJsonModule": true,
     "rootDir": "modules",
     "skipLibCheck": true,
