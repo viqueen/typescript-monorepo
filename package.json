@@ -17,7 +17,6 @@
     "test:watch": "jest --watchAll",
     "format:check": "prettier --check .",
     "format": "prettier --check --write .",
-    "prepare": "husky install",
     "lint": "eslint modules/ --ext .ts,.tsx,.js"
   },
   "devDependencies": {
