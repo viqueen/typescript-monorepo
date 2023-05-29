@@ -9,7 +9,7 @@ module.exports = {
             modules: true,
         },
     },
-    plugins: ['@typescript-eslint', 'import', '@monorepo-build'],
+    plugins: ['@typescript-eslint', 'import', '@labset-eslint'],
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/eslint-recommended',
@@ -21,7 +21,13 @@ module.exports = {
         node: true,
     },
     rules: {
-        '@monorepo-build/import-modules': 'error',
+        '@labset-eslint/import-modules': [
+            'error',
+            {
+                alias: '@monorepo',
+                modulesDir: 'modules',
+            },
+        ],
         '@typescript-eslint/no-unused-vars': [
             'error',
             {
