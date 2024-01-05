@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useMemo } from "react";
 
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { createRoot, hydrateRoot } from "react-dom/client";
 
 import { ProductRoutes } from "../routes";
 
 const ProductApp = () => {
+  const theme = useMemo(() => createTheme({}), []);
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <ProductRoutes />
-    </>
+    </ThemeProvider>
   );
 };
 
