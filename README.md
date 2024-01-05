@@ -24,16 +24,10 @@ brew install yarn
 yarn workspace @monorepo/harness env:up
 ```
 
-- start backend
-
-```bash
-yarn workspace @monorepo-frontend/app start
-```
-
 - start frontend
 
 ```bash
-yarn workspace @product-fe/app dev
+yarn workspace @monorepo-frontend/app start
 ```
 
 ### house-keeping
