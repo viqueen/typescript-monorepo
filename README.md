@@ -21,7 +21,7 @@ brew install yarn
 - start backend
 
 ```bash
-yarn workspace @product-be/app dev
+yarn workspace @monorepo-frontend/app start
 ```
 
 - start frontend

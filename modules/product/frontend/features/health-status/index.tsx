@@ -4,7 +4,7 @@ const HealthStatus = () => {
   const [status, setStatus] = useState<object>({});
 
   useEffect(() => {
-    fetch("/product-gateway/health")
+    fetch("/gateway/health")
       .then((response) => response.json())
       .then((data) => setStatus(data))
       .catch(console.error);

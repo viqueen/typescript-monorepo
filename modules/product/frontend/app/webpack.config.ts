@@ -10,7 +10,7 @@ const config: Configuration & DevConfiguration = {
         port: 9000,
         proxy: [
             {
-                context: ['/product-gateway'],
+                context: ['/gateway'],
                 target: 'http://localhost:3000'
             }
         ]
