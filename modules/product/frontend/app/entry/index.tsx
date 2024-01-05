@@ -6,7 +6,15 @@ import { createRoot, hydrateRoot } from "react-dom/client";
 import { ProductRoutes } from "../routes";
 
 const ProductApp = () => {
-  const theme = useMemo(() => createTheme({}), []);
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: "dark",
+        },
+      }),
+    [],
+  );
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
