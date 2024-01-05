@@ -16,6 +16,20 @@ brew install nvm
 brew install yarn
 ```
 
+### development
+
+- start backend
+
+```bash
+yarn workspace @product-be/app dev
+```
+
+- start frontend
+
+```bash
+yarn workspace @product-fe/app dev
+```
+
 ### house-keeping
 
 - build it
