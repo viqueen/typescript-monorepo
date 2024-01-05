@@ -1,8 +1,8 @@
-name: typescript-monorepo with react frontend Build and Test
+name: typescript-monorepo Build and Test
 on:
   push:
     branches:
-      - with-react-frontend
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
