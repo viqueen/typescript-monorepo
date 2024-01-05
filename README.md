@@ -18,6 +18,12 @@ brew install yarn
 
 ### development
 
+- start environment
+
+```bash
+yarn workspace @monorepo/harness env:up
+```
+
 - start backend
 
 ```bash
