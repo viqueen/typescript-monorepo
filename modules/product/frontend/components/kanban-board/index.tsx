@@ -9,9 +9,14 @@ import { KanbanList } from "./kanban-list";
 
 interface KanbanBoardProps {
   loadItems: () => Promise<Record<KanbanItemStatus, KanbanItemProps[]>>;
+  updateItemStatus: (input: {
+    item: KanbanItemProps;
+    from: KanbanItemStatus;
+    to: KanbanItemStatus;
+  }) => Promise<void>;
 }
 
-const KanbanBoard = ({ loadItems }: KanbanBoardProps) => {
+const KanbanBoard = ({ loadItems, updateItemStatus }: KanbanBoardProps) => {
   const [items, setItems] = useState<
     Record<KanbanItemStatus, KanbanItemProps[]>
   >({
@@ -30,14 +35,22 @@ const KanbanBoard = ({ loadItems }: KanbanBoardProps) => {
     return kind as KanbanItemStatus;
   };
 
-  const handleDragEnd = (result: DropResult) => {
+  const handleDragEnd = async (result: DropResult) => {
     if (!result.destination) {
       return;
     }
-    const source = items[asStatus(result.source.droppableId)];
-    const destination = items[asStatus(result.destination.droppableId)];
+    const sourceStatus = asStatus(result.source.droppableId);
+    const destinationStatus = asStatus(result.destination.droppableId);
+
+    const source = items[sourceStatus];
+    const destination = items[destinationStatus];
     const [removedFromSource] = source.splice(result.source.index, 1);
     destination.splice(result.destination.index, 0, removedFromSource);
+    await updateItemStatus({
+      item: removedFromSource,
+      from: sourceStatus,
+      to: destinationStatus,
+    });
   };
 
   return (
@@ -67,4 +80,4 @@ const KanbanBoard = ({ loadItems }: KanbanBoardProps) => {
 };
 
 export { KanbanBoard, KanbanItemStatus };
-export type { KanbanBoardProps };
+export type { KanbanBoardProps, KanbanItemProps };
