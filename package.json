@@ -60,6 +60,7 @@
     "yarn-deduplicate": "^6.0.2"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.8",
     "@apollo/server": "^4.10.0",
     "@apollo/server-plugin-landing-page-graphql-playground": "^4.0.1",
     "@emotion/react": "^11.11.3",

@@ -1,9 +1,12 @@
 import React, { useMemo } from "react";
 
+import { GraphqlApiProvider } from "@monorepo-frontend/graphql-api-context-provider";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { createRoot, hydrateRoot } from "react-dom/client";
 
 import { ProductRoutes } from "../routes";
+
+import { clientProvider } from "./client-provider";
 
 const ProductApp = () => {
   const theme = useMemo(
@@ -18,7 +21,9 @@ const ProductApp = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <ProductRoutes />
+      <GraphqlApiProvider clientProvider={clientProvider}>
+        <ProductRoutes />
+      </GraphqlApiProvider>
     </ThemeProvider>
   );
 };

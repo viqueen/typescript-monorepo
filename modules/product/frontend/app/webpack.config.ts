@@ -1,7 +1,8 @@
 import path from 'path';
 
+import { todoConfig } from '@monorepo-backend/config';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { Configuration } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 import { Configuration as DevConfiguration } from 'webpack-dev-server';
 
 const config: Configuration & DevConfiguration = {
@@ -36,6 +37,11 @@ const config: Configuration & DevConfiguration = {
         ]
     },
     plugins: [
+        new DefinePlugin({
+            __TODO_GATEWAY__: JSON.stringify({
+                url: todoConfig.GATEWAY_URL
+            })
+        }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'entry', 'index.html')
         })

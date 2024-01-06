@@ -1,0 +1,6 @@
+{
+  "name": "@monorepo-frontend/gateway-component",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.tsx"
+}
