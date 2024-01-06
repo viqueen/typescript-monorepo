@@ -1,0 +1,5 @@
+{
+  "watch": ["../product/backend", "../product/graphql"],
+  "ext": "ts,json",
+  "exec": "ts-node server/index.ts"
+}
