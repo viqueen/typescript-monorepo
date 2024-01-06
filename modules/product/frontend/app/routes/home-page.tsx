@@ -1,31 +1,25 @@
-import React, { useMemo, useState } from "react";
-
-import { KanbanBoard } from "@monorepo-frontend/kanban-board-component";
-import { TodoLayout } from "@monorepo-frontend/todo-layout-feature";
+import React, { useCallback } from "react";
 
 import {
-  KanbanItemProps,
+  KanbanBoard,
   KanbanItemStatus,
-} from "./../../components/kanban-board/kanban-item";
+} from "@monorepo-frontend/kanban-board-component";
+import { TodoLayout } from "@monorepo-frontend/todo-layout-feature";
+
 import { doneItems, inProgressItems, todoItems } from "./data";
 
 const HomePage = () => {
-  const [todo] = useState<KanbanItemProps[]>(todoItems);
-  const [inProgress] = useState<KanbanItemProps[]>(inProgressItems);
-  const [done] = useState<KanbanItemProps[]>(doneItems);
-
-  const items = useMemo(
-    () => ({
-      [KanbanItemStatus.TODO]: todo,
-      [KanbanItemStatus.IN_PROGRESS]: inProgress,
-      [KanbanItemStatus.DONE]: done,
-    }),
-    [todo, inProgress, done],
-  );
+  const loadItems = useCallback(async () => {
+    return {
+      [KanbanItemStatus.TODO]: todoItems,
+      [KanbanItemStatus.IN_PROGRESS]: inProgressItems,
+      [KanbanItemStatus.DONE]: doneItems,
+    };
+  }, []);
 
   return (
     <TodoLayout>
-      <KanbanBoard items={items} />
+      <KanbanBoard loadItems={loadItems} />
     </TodoLayout>
   );
 };

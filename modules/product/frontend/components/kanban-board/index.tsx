@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import type { DropResult } from "react-beautiful-dnd";
 
 import { Grid } from "@mui/material";
 
@@ -7,13 +8,36 @@ import { KanbanItemProps, KanbanItemStatus } from "./kanban-item";
 import { KanbanList } from "./kanban-list";
 
 interface KanbanBoardProps {
-  items: Record<KanbanItemStatus, KanbanItemProps[]>;
+  loadItems: () => Promise<Record<KanbanItemStatus, KanbanItemProps[]>>;
 }
 
-const KanbanBoard = ({ items }: KanbanBoardProps) => {
-  // Handle the drag end event
-  const handleDragEnd = () => {
-    // TODO: Update the state based on the result
+const KanbanBoard = ({ loadItems }: KanbanBoardProps) => {
+  const [items, setItems] = useState<
+    Record<KanbanItemStatus, KanbanItemProps[]>
+  >({
+    [KanbanItemStatus.TODO]: [],
+    [KanbanItemStatus.IN_PROGRESS]: [],
+    [KanbanItemStatus.DONE]: [],
+  });
+
+  useEffect(() => {
+    loadItems().then((items) => {
+      setItems(items);
+    });
+  }, []);
+
+  const asStatus = (kind: string) => {
+    return kind as KanbanItemStatus;
+  };
+
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) {
+      return;
+    }
+    const source = items[asStatus(result.source.droppableId)];
+    const destination = items[asStatus(result.destination.droppableId)];
+    const [removedFromSource] = source.splice(result.source.index, 1);
+    destination.splice(result.destination.index, 0, removedFromSource);
   };
 
   return (
@@ -42,5 +66,5 @@ const KanbanBoard = ({ items }: KanbanBoardProps) => {
   );
 };
 
-export { KanbanBoard };
+export { KanbanBoard, KanbanItemStatus };
 export type { KanbanBoardProps };
