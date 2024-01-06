@@ -1,6 +1,7 @@
 import React from "react";
+import { Draggable, Droppable } from "react-beautiful-dnd";
 
-import { Chip, Divider, Grid, Paper } from "@mui/material";
+import { Box, Chip, Divider, Grid, Paper } from "@mui/material";
 
 import { KanbanItem, KanbanItemProps, KanbanItemStatus } from "./kanban-item";
 
@@ -21,16 +22,51 @@ const KanbanListStatus = ({ status }: Pick<KanbanListProps, "status">) => {
   }
 };
 
+const DraggableListItem = ({
+  index,
+  item,
+}: {
+  index: number;
+  item: KanbanItemProps;
+}) => {
+  return (
+    <Draggable draggableId={item.id} index={index}>
+      {(provided) => (
+        <Grid
+          item
+          ref={provided.innerRef}
+          sx={{ marginTop: 2 }}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <KanbanItem item={item} />
+        </Grid>
+      )}
+    </Draggable>
+  );
+};
+
+const DroppableList = ({ status, items }: KanbanListProps) => {
+  return (
+    <Droppable droppableId={status}>
+      {(provided) => (
+        <Box ref={provided.innerRef} {...provided.droppableProps}>
+          {items.map((item, index) => (
+            <DraggableListItem key={item.id} index={index} item={item} />
+          ))}
+          {provided.placeholder}
+        </Box>
+      )}
+    </Droppable>
+  );
+};
+
 const KanbanList = ({ status, items }: KanbanListProps) => {
   return (
     <Paper variant="outlined" sx={{ p: 2 }}>
       <KanbanListStatus status={status} />
       <Divider sx={{ marginTop: 2, marginBottom: 2 }} />
-      {items.map((item) => (
-        <Grid item key={item.id} sx={{ marginTop: 2 }}>
-          <KanbanItem key={item.id} item={item} />
-        </Grid>
-      ))}
+      <DroppableList status={status} items={items} />
     </Paper>
   );
 };
