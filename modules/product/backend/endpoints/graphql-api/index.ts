@@ -1,8 +1,7 @@
-import { ApolloServer, ApolloServerPlugin } from '@apollo/server';
-import {
-    ExpressContextFunctionArgument,
-    expressMiddleware
-} from '@apollo/server/express4';
+import { ApolloServer } from '@apollo/server';
+import type { ApolloServerPlugin } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
+import type { ExpressContextFunctionArgument } from '@apollo/server/express4';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from '@apollo/server-plugin-landing-page-graphql-playground';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { typeDefs } from '@monorepo-graphql/backend-types';
@@ -10,6 +9,8 @@ import {
     ITodoApolloContext,
     TodoApolloContext
 } from '@monorepo-graphql/context';
+import * as Mutation from '@monorepo-graphql/mutations';
+import * as Query from '@monorepo-graphql/queries';
 import { Express } from 'express';
 
 interface GraphqlApiEndpointProps {
@@ -19,7 +20,7 @@ interface GraphqlApiEndpointProps {
 const graphqlApiEndpoint = async ({ app }: GraphqlApiEndpointProps) => {
     const schema = makeExecutableSchema({
         typeDefs,
-        resolvers: {}
+        resolvers: { Query, Mutation }
     });
 
     const plugins = [
