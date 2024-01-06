@@ -1,0 +1,6 @@
+{
+  "name": "@monorepo-graphql/frontend-types",
+  "version": "1.0.0",
+  "private": true,
+  "main": "__generated__/api.ts"
+}
