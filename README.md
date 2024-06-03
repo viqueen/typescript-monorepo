@@ -18,6 +18,12 @@ brew install yarn
 
 ### development
 
+- install dependencies
+
+```bash
+yarn
+```
+
 - start environment
 
 ```bash

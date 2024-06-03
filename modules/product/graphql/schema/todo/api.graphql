@@ -1,23 +1,23 @@
 query ListTodoItems {
-    listTodoItems {
-        id
-        status
-        description
-    }
+  listTodoItems {
+    id
+    status
+    description
+  }
 }
 
 mutation CreateTodoItem {
-    createTodoItem {
-        id
-        status
-        description
-    }
+  createTodoItem {
+    id
+    status
+    description
+  }
 }
 
 mutation UpdateTodoItemStatus($input: UpdateTodoItemStatusInput) {
-    updateTodoItemStatus(input: $input) {
-        id
-        description
-        status
-    }
+  updateTodoItemStatus(input: $input) {
+    id
+    description
+    status
+  }
 }

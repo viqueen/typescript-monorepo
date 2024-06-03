@@ -1,26 +1,26 @@
 enum TodoItemStatus {
-    TODO
-    IN_PROGRESS
-    DONE
+  TODO
+  IN_PROGRESS
+  DONE
 }
 
 type TodoItem {
-    id: ID!,
-    description: String,
-    status: TodoItemStatus
+  id: ID!
+  description: String
+  status: TodoItemStatus
 }
 
 type Query {
-    listTodoItems: [TodoItem!]!
+  listTodoItems: [TodoItem!]!
 }
 
 type Mutation {
-    createTodoItem: TodoItem!
-    updateTodoItemStatus(input: UpdateTodoItemStatusInput): TodoItem!
+  createTodoItem: TodoItem!
+  updateTodoItemStatus(input: UpdateTodoItemStatusInput): TodoItem!
 }
 
 input UpdateTodoItemStatusInput {
-    itemId: ID!
-    fromStatus: TodoItemStatus
-    toStatus: TodoItemStatus
+  itemId: ID!
+  fromStatus: TodoItemStatus
+  toStatus: TodoItemStatus
 }
