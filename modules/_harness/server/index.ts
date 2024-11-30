@@ -26,6 +26,7 @@ const startExpressApp = async ({ app }: WithExpressApp) => {
     });
     const shutdown = () => {
         console.info('\n🛑 [monorepo-harness] shutdown');
+        server.close();
     };
     process.on('SIGTERM', shutdown);
     process.on('SIGINT', shutdown);
