@@ -1,6 +1,6 @@
 {
   "name": "@monorepo/root",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "typescript monorepo template",
   "repository": "git@github.com:viqueen/typescript-monorepo.git",
   "author": "Hasnae R. <>",
@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.11.10",
-    "@apollo/server": "^4.11.2",
+    "@apollo/server": "^5.0.0",
     "@apollo/server-plugin-landing-page-graphql-playground": "^4.0.1",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
